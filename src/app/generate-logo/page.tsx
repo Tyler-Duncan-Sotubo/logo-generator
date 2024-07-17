@@ -1,17 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { api } from "@/trpc/react";
 import { Input } from "@/components/Input";
 import { FormGroup } from "@/components/FormGroup";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const GenerateLogo = () => {
   const [formData, setFormData] = useState({
     logoName: "",
     tagLine: "",
   });
+  const [imageUrl, setImageUrl] = useState<string>("");
 
   const { data: session, status } = useSession();
 
@@ -25,20 +26,19 @@ const GenerateLogo = () => {
   };
 
   const generateLogo = api.generate.generateLogo.useMutation({
-    onSettled: () => {
-      setFormData({
-        logoName: "",
-        tagLine: "",
-      });
-    },
     onSuccess: (data) => {
-      alert("Logo generated! " + data.logoUrl);
+      if (!data.imageUrl) return;
+      setImageUrl(data.imageUrl);
     },
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     generateLogo.mutate(formData);
+    setFormData({
+      logoName: "",
+      tagLine: "",
+    });
   };
 
   return (
@@ -61,6 +61,7 @@ const GenerateLogo = () => {
         </FormGroup>
         <button className="bg-blue-900 px-6 text-white">Generate</button>
       </form>
+      <Image src={imageUrl} alt="Generated Logo" width={500} height={500} />
       {status === "authenticated" ? (
         <>
           <p>Signed in as {session.user?.name}</p>

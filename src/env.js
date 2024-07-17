@@ -24,6 +24,10 @@ export const env = createEnv({
     ),
     GOOGLE_CLIENT_SECRET: z.string(),
     GOOGLE_CLIENT_ID: z.string(),
+    DALLE_API_KEY: z.string(),
+    MOCK_DALLE_API: z.string(),
+    AWS_ACCESS_KEY_ID: z.string(),
+    AWS_SECRET_ACCESS_KEY: z.string(),
   },
 
   /**
@@ -46,6 +50,10 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    DALLE_API_KEY: process.env.DALLE_API_KEY,
+    MOCK_DALLE_API: process.env.MOCK_DALLE_API,
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
