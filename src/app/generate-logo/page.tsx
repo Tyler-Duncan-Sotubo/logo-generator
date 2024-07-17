@@ -1,15 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { api } from "@/trpc/react";
 import { Input } from "@/components/Input";
 import { FormGroup } from "@/components/FormGroup";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const GenerateLogo = () => {
   const [formData, setFormData] = useState({
     logoName: "",
     tagLine: "",
   });
+
+  const { data: session, status } = useSession();
 
   const updateForm = (key: keyof typeof formData) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +61,24 @@ const GenerateLogo = () => {
         </FormGroup>
         <button className="bg-blue-900 px-6 text-white">Generate</button>
       </form>
+      {status === "authenticated" ? (
+        <>
+          <p>Signed in as {session.user?.name}</p>
+          <button
+            onClick={() => signOut()}
+            className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+          >
+            Sign Out
+          </button>
+        </>
+      ) : (
+        <button
+          onClick={() => signIn()}
+          className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+        >
+          Sign In
+        </button>
+      )}
     </div>
   );
 };
