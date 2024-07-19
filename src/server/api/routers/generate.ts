@@ -28,7 +28,8 @@ const generateAPILogo = async (
   } else {
     const response = await openai.images.generate({
       model: "dall-e-3",
-      prompt: logoName,
+      prompt:
+        "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS: create a 128x128px logo of a company name tooxclusive in the entertainment industry flat white or blue minimalistic shape on a black background, a modern style .",
       n: 1,
       size: "1024x1024",
       response_format: "b64_json",

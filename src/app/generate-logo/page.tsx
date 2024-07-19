@@ -6,8 +6,10 @@ import { Input } from "@/components/Input";
 import { FormGroup } from "@/components/FormGroup";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
+import { useBuyCredits } from "@/hooks/useBuyCredits";
 
 const GenerateLogo = () => {
+  const { buyCredits } = useBuyCredits();
   const [formData, setFormData] = useState({
     logoName: "",
     tagLine: "",
@@ -44,6 +46,14 @@ const GenerateLogo = () => {
   return (
     <div className="flex min-h-screen flex-col items-center">
       <h1 className="my-20 text-6xl">Generate Logo</h1>
+      {status === "authenticated" && (
+        <button
+          onClick={() => buyCredits().catch(console.error)}
+          className="my-10 bg-blue-900 px-6 text-white"
+        >
+          Buy Credit
+        </button>
+      )}
       <form className="flex gap-2" onSubmit={handleSubmit}>
         <FormGroup>
           <label>Logo Name</label>

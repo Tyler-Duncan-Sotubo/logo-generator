@@ -28,6 +28,10 @@ export const env = createEnv({
     MOCK_DALLE_API: z.string(),
     AWS_ACCESS_KEY_ID: z.string(),
     AWS_SECRET_ACCESS_KEY: z.string(),
+    STRIPE_SECRET_KEY: z.string(),
+    HOST_NAME: z.string(),
+    PRODUCT_PRICE_ID: z.string(),
+    STRIPE_WEBHOOK_SECRET: z.string(),
   },
 
   /**
@@ -37,6 +41,7 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_STRIPE_KEY: z.string(),
   },
 
   /**
@@ -54,6 +59,11 @@ export const env = createEnv({
     MOCK_DALLE_API: process.env.MOCK_DALLE_API,
     AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    NEXT_PUBLIC_STRIPE_KEY: process.env.NEXT_PUBLIC_STRIPE_KEY,
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+    HOST_NAME: process.env.HOST_NAME,
+    PRODUCT_PRICE_ID: process.env.PRODUCT_PRICE_ID,
+    STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
