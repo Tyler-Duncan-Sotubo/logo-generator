@@ -15,7 +15,6 @@ const CreateIcon = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     prompt: "",
-    numberOfIcons: "1",
   });
   const [showModal, setShowModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>("");
@@ -59,7 +58,6 @@ const CreateIcon = () => {
     const checkData = {
       ...formData,
       fontStyle: selectedStyle,
-      numberOfIcons: parseInt(formData.numberOfIcons),
       color: selectedColor,
       background: selectedBackground,
     };
@@ -72,7 +70,6 @@ const CreateIcon = () => {
 
     setFormData({
       prompt: "",
-      numberOfIcons: "1",
     });
   };
 
@@ -175,20 +172,12 @@ const CreateIcon = () => {
           </div>
         </div>
 
-        {/* Number of Logos */}
-        <FormGroup className="mb-12 lg:w-1/3">
-          <Label htmlFor={formData.numberOfIcons}>
-            Number of Logos (1 credit per Logo)
-          </Label>
-          <Input
-            type="number"
-            value={formData.numberOfIcons}
-            required
-            onChange={updateForm("numberOfIcons")}
-          ></Input>
-        </FormGroup>
         {/* Submit Button */}
         <Button>Generate</Button>
+
+        <p className="my-10 text-xl text-green-800">
+          One Credit per Logo Generated
+        </p>
 
         {/* Error Messages */}
         {formErrors.length > 0 && (

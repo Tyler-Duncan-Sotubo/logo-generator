@@ -13,11 +13,9 @@ import { Spinner } from "@/components/Spinner";
 const CreateLogo = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    model: "",
     prompt: "",
     letterOne: "",
     letterTwo: "",
-    numberOfIcons: "1",
   });
   const [showModal, setShowModal] = useState(false);
   const [selectedPattern, setSelectedPattern] = useState<string[]>([]);
@@ -66,7 +64,6 @@ const CreateLogo = () => {
       colors: selectedPattern,
       industry: selectedIndustry,
       fontStyle: selectedFontStyle,
-      numberOfIcons: parseInt(formData.numberOfIcons),
     };
 
     const isValid = validateForm();
@@ -76,11 +73,9 @@ const CreateLogo = () => {
     }
 
     setFormData({
-      model: "",
       prompt: "",
       letterOne: "",
       letterTwo: "",
-      numberOfIcons: "1",
     });
   };
 
@@ -202,20 +197,13 @@ const CreateLogo = () => {
             ))}
           </div>
         </div>
-        {/* Number of Logos */}
-        <FormGroup className="mb-12 lg:w-1/3">
-          <Label htmlFor={formData.numberOfIcons}>
-            Number of Logos (1 credit per Logo)
-          </Label>
-          <Input
-            type="number"
-            value={formData.numberOfIcons}
-            required
-            onChange={updateForm("numberOfIcons")}
-          ></Input>
-        </FormGroup>
+
         {/* Submit Button */}
         <Button>Generate </Button>
+
+        <p className="my-10 text-xl text-green-800">
+          One Credit per Logo Generated
+        </p>
 
         {/* Error Messages */}
         {formErrors.length > 0 && (
