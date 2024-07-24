@@ -1,35 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import type { Logos } from "@prisma/client";
 import { api } from "@/trpc/react";
 import Image from "next/image";
-import { Spinner } from "@/components/Spinner";
 
 const MyLogos = () => {
   const { status } = useSession();
-  const [showModal, setShowModal] = useState(false);
 
   const logos = api.logos.getLogos.useQuery();
   const newLogos = api.logos.getLogosGeneratedInLast60Secs.useQuery();
 
-  useEffect(() => {
-    if (newLogos.isFetching || logos.isFetching) {
-      setShowModal(true);
-    }
-  }, [newLogos.isFetching, logos.isFetching]);
-
   return (
     <>
-      {showModal && (
-        <section className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="flex h-[30%] w-[80%] flex-col items-center justify-center">
-            <Spinner />
-          </div>
-        </section>
-      )}
-
       {status === "authenticated" ? (
         <>
           {" "}

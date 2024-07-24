@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import type { Icons } from "@prisma/client";
 import { api } from "@/trpc/react";
 import Image from "next/image";
-import { Spinner } from "@/components/Spinner";
 import { useSession } from "next-auth/react";
 
 const Myicons = () => {
@@ -13,25 +11,9 @@ const Myicons = () => {
   const icons = api.icons.getIcons.useQuery();
   const newIcons = api.icons.getIconsGeneratedInLast60Secs.useQuery();
 
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    if (newIcons.isPending || icons.isPending) {
-      setShowModal(true);
-    }
-  }, [newIcons.isPending, icons.isPending]);
-
   return (
     <>
       {/* Recently Generated Icons  */}
-      {showModal && (
-        <section className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="flex h-[30%] w-[80%] flex-col items-center justify-center">
-            <Spinner />
-          </div>
-        </section>
-      )}
-
       {status === "authenticated" ? (
         <>
           <section>
