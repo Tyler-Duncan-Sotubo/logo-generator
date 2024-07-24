@@ -9,16 +9,16 @@ import { Spinner } from "@/components/Spinner";
 
 const MyLogos = () => {
   const { status } = useSession();
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const logos = api.logos.getLogos.useQuery();
   const newLogos = api.logos.getLogosGeneratedInLast60Secs.useQuery();
 
   useEffect(() => {
-    if (newLogos.isSuccess || logos.isSuccess) {
-      setShowModal(false);
+    if (newLogos.isFetching || logos.isFetching) {
+      setShowModal(true);
     }
-  }, [newLogos.isSuccess, logos.isSuccess]);
+  }, [newLogos.isFetching, logos.isFetching]);
 
   return (
     <>

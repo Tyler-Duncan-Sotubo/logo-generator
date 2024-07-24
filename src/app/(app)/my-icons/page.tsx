@@ -13,13 +13,13 @@ const Myicons = () => {
   const icons = api.icons.getIcons.useQuery();
   const newIcons = api.icons.getIconsGeneratedInLast60Secs.useQuery();
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (newIcons.isSuccess || icons.isSuccess) {
-      setShowModal(false);
+    if (newIcons.isPending || icons.isPending) {
+      setShowModal(true);
     }
-  }, [newIcons.isSuccess, icons.isSuccess]);
+  }, [newIcons.isPending, icons.isPending]);
 
   return (
     <>
