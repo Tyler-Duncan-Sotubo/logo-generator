@@ -16,10 +16,10 @@ const Myicons = () => {
   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
-    if (newIcons.isPending || icons.isPending) {
+    if (newIcons.isSuccess || icons.isSuccess) {
       setShowModal(false);
     }
-  }, [newIcons.isPending, icons.isPending]);
+  }, [newIcons.isSuccess, icons.isSuccess]);
 
   return (
     <>

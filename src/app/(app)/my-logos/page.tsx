@@ -15,10 +15,10 @@ const MyLogos = () => {
   const newLogos = api.logos.getLogosGeneratedInLast60Secs.useQuery();
 
   useEffect(() => {
-    if (newLogos.isPending || logos.isPending) {
+    if (newLogos.isSuccess || logos.isSuccess) {
       setShowModal(false);
     }
-  }, [newLogos.isPending, logos.isPending]);
+  }, [newLogos.isSuccess, logos.isSuccess]);
 
   return (
     <>
