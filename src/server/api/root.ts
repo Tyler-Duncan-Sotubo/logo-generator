@@ -1,5 +1,9 @@
 import { generateRouter } from "./routers/generate";
 import { checkoutRouter } from "./routers/checkout";
+import { logoRouter } from "./routers/logos";
+import { userRouter } from "./routers/user";
+import { generateIconRouter } from "./routers/generateIcon";
+import { iconRouter } from "./routers/icons";
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 
 /**
@@ -10,6 +14,10 @@ import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 export const appRouter = createTRPCRouter({
   generate: generateRouter,
   checkout: checkoutRouter,
+  logos: logoRouter,
+  user: userRouter,
+  generateIcon: generateIconRouter,
+  icons: iconRouter,
 });
 
 // export type definition of API

@@ -9,7 +9,6 @@ export async function POST(request: Request) {
 
   const sig = request.headers.get("Stripe-Signature");
   if (!sig) {
-    console.log("No signature");
     return NextResponse.json({ error: "No signature" });
   }
 
@@ -35,24 +34,39 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err });
   }
 
-  console.log("received ", event.type);
-
   // Handle the event
   switch (event.type) {
     case "checkout.session.completed":
       const completedEvent = event.data.object as {
         id: string;
+        amount_total: number;
         metadata: {
           userId: string;
         } | null;
       };
+
+      let credits = 0;
+      switch (completedEvent.amount_total) {
+        case 500:
+          credits = 50;
+          break;
+        case 900:
+          credits = 100;
+          break;
+        case 2500:
+          credits = 300;
+          break;
+        default:
+          console.log(`Unhandled amount ${completedEvent.amount_total}`);
+      }
+
       await db.user.update({
         where: {
           id: completedEvent.metadata?.userId,
         },
         data: {
           credits: {
-            increment: 100,
+            increment: credits,
           },
         },
       });

@@ -7,7 +7,7 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const config = {
   images: {
-    domains: ["generator-logo.s3.amazonaws.com"],
+    domains: ["generator-logo.s3.amazonaws.com", "lh3.googleusercontent.com"],
   },
 };
 

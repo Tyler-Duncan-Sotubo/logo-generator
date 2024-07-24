@@ -3,7 +3,7 @@ export const Input = (props: React.ComponentPropsWithoutRef<"input">) => {
     <input
       {...props}
       type="text"
-      className="w-full border-b px-2 py-3 outline-none"
+      className="mt-2 w-full rounded-lg border bg-slate-50 px-4 py-4 text-2xl font-medium outline-none"
     />
   );
 };

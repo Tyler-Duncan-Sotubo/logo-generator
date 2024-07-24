@@ -48,16 +48,27 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
-    credits       Int       @default(5)
+    credits       Int       @default(0)
     accounts      Account[]
     sessions      Session[]
     logos         Logos[]
+    Icons         Icons[]
 }
 
 model Logos {
-    id       String @id @default(cuid())
-    userId   String
-    logoName String
+    id        String   @id @default(cuid())
+    userId    String
+    prompt    String
+    createdAt DateTime @default(now())
+
+    User User @relation(fields: [userId], references: [id])
+}
+
+model Icons {
+    id        String   @id @default(cuid())
+    userId    String
+    prompt    String
+    createdAt DateTime @default(now())
 
     User User @relation(fields: [userId], references: [id])
 }

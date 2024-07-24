@@ -1,10 +1,6 @@
 import { z } from "zod";
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 import OpenAI from "openai";
 import { env } from "@/env";
@@ -20,21 +16,30 @@ const s3 = new AWS.S3({
   secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
 });
 
-const generateAPILogo = async (
-  logoName: string,
-): Promise<string | undefined> => {
+const generateAPILogo = async (prompt: string, numberOfIcons: number) => {
   if (env.MOCK_DALLE_API === "true") {
-    return b64Image;
+    return new Array<string>(numberOfIcons).fill(b64Image);
+    // const response = await openai.images.generate({
+    //   model: "dall-e-2",
+    //   prompt: promptExample,
+    //   n: numberOfIcons,
+    //   size: "1024x1024",
+    //   response_format: "b64_json",
+    // });
+    // return response.data.map((result) => result.b64_json ?? "");
   } else {
-    const response = await openai.images.generate({
-      model: "dall-e-3",
-      prompt:
-        "I NEED to test how the tool works with extremely simple prompts. DO NOT add any detail, just use it AS-IS: create a 128x128px logo of a company name tooxclusive in the entertainment industry flat white or blue minimalistic shape on a black background, a modern style .",
-      n: 1,
-      size: "1024x1024",
-      response_format: "b64_json",
-    });
-    return response.data[0]?.b64_json;
+    const results = [];
+    for (let i = 0; i < numberOfIcons; i++) {
+      const response = await openai.images.generate({
+        model: "dall-e-3",
+        prompt,
+        n: 1,
+        size: "1024x1024",
+        response_format: "b64_json",
+      });
+      results.push(response.data[0]?.b64_json);
+    }
+    return results;
   }
 };
 
@@ -42,56 +47,78 @@ export const generateRouter = createTRPCRouter({
   generateLogo: protectedProcedure
     .input(
       z.object({
-        logoName: z.string(),
-        tagLine: z.string(),
+        prompt: z.string(),
+        letterOne: z.string(),
+        letterTwo: z.string(),
+        industry: z.string(),
+        colors: z.array(z.string()),
+        fontStyle: z.string(),
+        numberOfIcons: z.number().min(1).max(10),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const result = await ctx.db.user.update({
+      const result = await ctx.db.user.findUnique({
         where: {
           id: ctx.session.user.id,
         },
-        data: {
-          credits: {
-            decrement: 1,
-          },
-        },
       });
 
-      if (result.credits <= 0) {
+      if (result!.credits <= 0) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "Not enough credits",
+          message: "You do not enough credits",
+        });
+      } else {
+        await ctx.db.user.update({
+          where: {
+            id: ctx.session.user.id,
+          },
+          data: {
+            credits: {
+              decrement: input.numberOfIcons,
+            },
+          },
         });
       }
 
-      const base64EncodedImage = await generateAPILogo(input.logoName);
+      const colors = input.colors.map((color) => color.toLowerCase());
+      const prompt = `The Icon should not contain any text, the Icon should not contain any other images, one Icon only . Create a letterform Icon for '${input.prompt}'  emphasizing the '${input.letterOne}' and '${input.letterTwo}', representing the brand's expertise in providing cutting-edge ${input.industry} solutions, using a color palette of ${colors.join(" , ")}, using white or black background. The Icon should be ${input.fontStyle}, sleek, and professional.`;
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      const logo = await ctx.db.logos.create({
-        data: {
-          logoName: input.logoName,
-          userId: ctx.session.user.id,
-        },
-      });
+      console.log("prompt", prompt);
+      const base64EncodedImages = await generateAPILogo(
+        prompt,
+        input.numberOfIcons,
+      );
 
       const BUCKET_NAME = "generator-logo";
 
-      // Save the generated logo to the database
-      await s3
-        .putObject({
-          Bucket: BUCKET_NAME,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          Key: `${logo.id}.png`,
-          Body: Buffer.from(base64EncodedImage!, "base64"),
-          ContentEncoding: "base64",
-          ContentType: "image/png",
-        })
-        .promise();
+      const createLogo = await Promise.all(
+        base64EncodedImages.map(async (image) => {
+          const logo = await ctx.db.logos.create({
+            data: {
+              prompt: input.prompt,
+              userId: ctx.session.user.id,
+            },
+          });
 
-      return {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        imageUrl: `https://${BUCKET_NAME}.s3.amazonaws.com/${logo.id}.png`,
-      };
+          await s3
+            .putObject({
+              Bucket: BUCKET_NAME,
+              Key: `${logo.id}.png`,
+              Body: Buffer.from(image ?? "", "base64"),
+              ContentEncoding: "base64",
+              ContentType: "image/png",
+            })
+            .promise();
+
+          return logo;
+        }),
+      );
+
+      return createLogo.map((logo) => {
+        return {
+          imageUrl: `https://${BUCKET_NAME}.s3.amazonaws.com/${logo.id}.png`,
+        };
+      });
     }),
 });

@@ -8,21 +8,36 @@ const Stripe = new stripe(env.STRIPE_SECRET_KEY, {
 });
 
 export const checkoutRouter = createTRPCRouter({
-  createCheckout: protectedProcedure.mutation(async ({ ctx }) => {
-    return await Stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      metadata: {
-        userId: ctx.session.user.id,
-      },
-      line_items: [
-        {
-          price: env.PRODUCT_PRICE_ID,
-          quantity: 1,
+  createCheckout: protectedProcedure
+    .input(
+      z.object({
+        price: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      let price = "";
+      if (input.price === "5") {
+        price = env.PRODUCT_PRICE_ID;
+      } else if (input.price === "9") {
+        price = "price_1PeeYhGtt0b9wFoNGsYV84fJ";
+      } else if (input.price === "25") {
+        price = "price_1PeeZIGtt0b9wFoNeNOD3REo";
+      }
+
+      return await Stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        metadata: {
+          userId: ctx.session.user.id,
         },
-      ],
-      mode: "payment",
-      success_url: `${env.HOST_NAME}`,
-      cancel_url: `${env.HOST_NAME}`,
-    });
-  }),
+        line_items: [
+          {
+            price,
+            quantity: 1,
+          },
+        ],
+        mode: "payment",
+        success_url: `${env.HOST_NAME}`,
+        cancel_url: `${env.HOST_NAME}`,
+      });
+    }),
 });
