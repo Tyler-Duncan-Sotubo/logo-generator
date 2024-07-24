@@ -12,8 +12,8 @@ const openai = new OpenAI({
 });
 
 const s3 = new AWS.S3({
-  accessKeyId: env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: env.BUCKET_ACCESS_KEY_ID,
+  secretAccessKey: env.BUCKET_SECRET_ACCESS_KEY,
 });
 
 const generateAPIIcon = async (prompt: string, numberOfIcons: number) => {
