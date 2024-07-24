@@ -4,7 +4,6 @@ import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 import OpenAI from "openai";
 import { env } from "@/env";
-import { b64Image } from "@/data/b64Image";
 import AWS from "aws-sdk";
 
 const openai = new OpenAI({
@@ -17,16 +16,15 @@ const s3 = new AWS.S3({
 });
 
 const generateAPIIcon = async (prompt: string, numberOfIcons: number) => {
-  if (env.MOCK_DALLE_API === "true") {
-    return new Array<string>(numberOfIcons).fill(b64Image);
-    // const response = await openai.images.generate({
-    //   model: "dall-e-2",
-    //   prompt: promptExample,
-    //   n: numberOfIcons,
-    //   size: "1024x1024",
-    //   response_format: "b64_json",
-    // });
-    // return response.data.map((result) => result.b64_json ?? "");
+  if (numberOfIcons === 1) {
+    const response = await openai.images.generate({
+      model: "dall-e-3",
+      prompt,
+      n: 1,
+      size: "1024x1024",
+      response_format: "b64_json",
+    });
+    return [response.data[0]?.b64_json];
   } else {
     const results = [];
     for (let i = 0; i < numberOfIcons; i++) {
