@@ -21,7 +21,7 @@ const HeroComponent = () => (
       </Link>
     </div>
     <Image
-      src="/banner.png"
+      src="https://generator-logo.s3.amazonaws.com/banner.png"
       alt="an image of a bunch of nice looking icons"
       width="500"
       height="400"

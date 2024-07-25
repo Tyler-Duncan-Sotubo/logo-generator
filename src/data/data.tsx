@@ -3,19 +3,19 @@ export const features = [
     title: "Rapid Icon Generation",
     description:
       "Icons are ready within seconds, allowing continuous fine-tuning of prompts and options to find the perfect icon quickly.",
-    img: "/feature2.webp",
+    img: "https://generator-logo.s3.amazonaws.com/feature2.webp",
   },
   {
     title: "Cloud-Based Management",
     description:
       "Automatically stores all generated icons in the cloud, eliminating the need for manual collection management.",
-    img: "/feature3.jpg",
+    img: "https://generator-logo.s3.amazonaws.com/feature3.jpg",
   },
   {
     title: "High-Resolution Customization",
     description:
       "You can use the logo generator to create a logo for your business, website, or social media profile.",
-    img: "/feature1.jpg",
+    img: "https://generator-logo.s3.amazonaws.com/feature1.jpg",
   },
 ];
 
