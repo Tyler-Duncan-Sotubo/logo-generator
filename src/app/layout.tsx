@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { Suspense } from "react";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
@@ -20,9 +21,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-G1G7M329V0" />
       <body>
         <NextAuthProvider>
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-G1G7M329V0" />
           <TRPCReactProvider>{children}</TRPCReactProvider>
           <CookieBanner />
         </NextAuthProvider>
