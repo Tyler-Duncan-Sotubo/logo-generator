@@ -208,3 +208,72 @@ export const iconStyles = [
     url: "https://generator-logo.s3.amazonaws.com/futuristic.webp",
   },
 ];
+
+export const cookiesPageData = [
+  {
+    title: "What are cookies?",
+    content: `Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website. They allow the website to recognize your device and store information about your preferences or actions.`,
+  },
+  {
+    title: "How We Use Cookies",
+    content: `We use cookies for a variety of purposes, including to operate and personalize the website. These cookies may also be used to track how you use the site to target ads to you on other websites.`,
+  },
+  {
+    title: "Types of Cookies We Use",
+    content: ``,
+    subContent: [
+      {
+        title: "Strictly Necessary Cookies:",
+        content: `These cookies are essential for you to navigate the website and use its features, such as accessing secure areas of the site. Without these cookies, certain services cannot be provided.`,
+      },
+      {
+        title: "Performance Cookies",
+        content: `These cookies collect information about how you use our website, such as which pages you visit most often. This data may be used to optimize the website and make it easier to navigate.`,
+      },
+      {
+        title: "Functional Cookies",
+        content: `These cookies allow the website to remember choices you make (such as your user name, language, or the region you are in) and provide enhanced, more personalized features.`,
+      },
+      {
+        title: "Targeting Cookies",
+        content: `These cookies are used to deliver advertisements that are more relevant to you and your interests. They may also be used to limit the number of times you see an advertisement and measure the effectiveness of advertising campaigns.`,
+      },
+    ],
+  },
+  {
+    title: "Specific Cookies We Use",
+    content: ``,
+    subContent: [
+      {
+        title: "Stripe Cookies",
+        content: `We use Stripe to process payments on our website. Stripe uses cookies to remember who you are and to process payments without storing any sensitive information like credit card numbers`,
+      },
+      {
+        title: "Google Analytics Cookies",
+        content: `We use Google Analytics to collect information about how visitors use our website. This information is used to compile reports and help us improve the website. Google Analytics cookies collect information anonymously, including the number of visitors to the site, where visitors have come from, and the pages they visited`,
+      },
+    ],
+  },
+  {
+    title: "Managing Cookies",
+    content: `You can control and manage cookies in various ways. Please note that removing or blocking cookies may affect your user experience and parts of the website may no longer be fully accessible`,
+    subContent: [
+      {
+        title: "Browser Settings",
+        content: `You can set your browser to accept or reject all or certain cookies. Check your browser settings for more information on how to manage cookies`,
+      },
+      {
+        title: "Third-Party Tools",
+        content: `Some third-party tools allow you to decline cookies from specific providers, such as Google Analytics. These tools are available online and can help you manage your preferences.`,
+      },
+    ],
+  },
+  {
+    title: "Consent",
+    content: `By using our website, you consent to the use of cookies as set out in this Cookie Policy. If you do not agree to our use of cookies, you should adjust your browser settings accordingly or refrain from using our website.`,
+  },
+  {
+    title: "Updates to This Cookie Policy",
+    content: `We may update this Cookie Policy from time to time to reflect changes in our practices and service offerings. Please check back regularly for updates.`,
+  },
+];

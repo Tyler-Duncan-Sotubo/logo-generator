@@ -12,7 +12,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <header>
         <Header />
       </header>
-      <main className="mx-auto my-16 w-[90%]">{children}</main>
+      <main className="mx-auto my-16 w-[85%] md:w-[90%]">{children}</main>
       <footer>
         <Footer />
       </footer>
