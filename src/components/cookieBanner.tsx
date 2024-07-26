@@ -8,6 +8,13 @@ import Link from "next/link";
 import { getLocalStorage, setLocalStorage } from "@/helper/storageHelper";
 import { useState, useEffect } from "react";
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag: any;
+  }
+}
+
 export default function CookieBanner() {
   const [cookieConsent, setCookieConsent] = useState(false);
 
@@ -19,15 +26,12 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const newValue = cookieConsent ? "granted" : "denied";
-
-    window.gtag("consent", "update", {
-      analytics_storage: newValue,
-    });
-
+    if (window.gtag) {
+      window.gtag("consent", "update", {
+        analytics_storage: newValue,
+      });
+    }
     setLocalStorage("cookie_consent", cookieConsent);
-
-    //For Testing
-    console.log("Cookie Consent: ", cookieConsent);
   }, [cookieConsent]);
 
   return (
