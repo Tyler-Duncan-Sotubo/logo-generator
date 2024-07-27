@@ -277,3 +277,79 @@ export const cookiesPageData = [
     content: `We may update this Cookie Policy from time to time to reflect changes in our practices and service offerings. Please check back regularly for updates.`,
   },
 ];
+
+export const termsData = [
+  {
+    title: "Definitions",
+    content: [
+      '"Website" refers to [Your Website Name], operated by [Your Company Name]',
+      '"User" refers to any individual or entity using the Website.',
+      '"Service" refers to the logo generator powered by DALL-E provided by the Website',
+      '"Generated Content" refers to logos or other outputs produced using the Service',
+    ],
+  },
+  {
+    title: "User Responsibilities",
+    content: [
+      "Users are responsible for maintaining the confidentiality of their account and password.",
+      "Users are responsible for all activities that occur under their account.",
+      "Users must not use the Service to create logos that are illegal, offensive, or infringe on the rights of others.",
+    ],
+  },
+  {
+    title: "Privacy Policy",
+    content: [
+      "The Website collects and uses personal information as outlined in the Privacy Policy.",
+      "By using the Service, users consent to the collection and use of their personal information.",
+    ],
+  },
+  {
+    title: "License",
+    content: [
+      "The Website grants users a limited, non-exclusive, non-transferable license to use the Service.",
+      "Users may not sublicense, sell, or distribute the Service or Generated Content.",
+    ],
+  },
+  {
+    title: "Intellectual Property",
+    content: [
+      "The Website and Service are protected by copyright.",
+      "Users retain ownership of the Generated Content.",
+      "Users grant the Website a non-exclusive, royalty-free license to use the Generated Content for marketing purposes.",
+    ],
+  },
+  {
+    title: "Limitation of Liability",
+    content: [
+      "The Website and Service are provided 'as is' without any warranties.",
+      "The Website is not liable for any damages arising from the use of the Service.",
+    ],
+  },
+  {
+    title: "Termination",
+    content: [
+      "The Website may terminate or suspend access to the Service without prior notice.",
+      "All provisions of the Terms that should survive termination will survive termination.",
+    ],
+  },
+  {
+    title: "Governing Law",
+    content: [
+      "These Terms are governed by the laws of the United Kingdom.",
+      "Any disputes arising from these Terms will be resolved in the courts of the United Kingdom.",
+    ],
+  },
+  {
+    title: "Changes to Terms",
+    content: [
+      "The Website may update the Terms at any time.",
+      "Users are encouraged to review the Terms regularly for changes.",
+    ],
+  },
+  {
+    title: "Contact Us",
+    content: [
+      "If you have any questions about the Terms, please contact us at [Your Contact Information].",
+    ],
+  },
+];

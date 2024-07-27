@@ -20,7 +20,7 @@ export const footerData = [
   },
   {
     title: "Privacy Policy",
-    href: "/privacy",
+    href: "/terms",
   },
   {
     title: "Refund Policy",
