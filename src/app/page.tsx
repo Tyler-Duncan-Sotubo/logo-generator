@@ -89,16 +89,16 @@ export default async function Home() {
             ))}
           </ul>
         </section>
-        <section className="my-20">
+        <section className="my-28">
           <div className="my-10">
             <h3 className="text-center text-2xl font-bold">
               Public Cheers for Us!
             </h3>
-            <p className="mb-10 text-center text-xl">
+            <p className="mb-20 text-center text-xl">
               Find out how our users are spreading the word
             </p>
           </div>
-          <ul className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-12 md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <li
                 key={testimonial.name}
