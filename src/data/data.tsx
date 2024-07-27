@@ -282,7 +282,7 @@ export const termsData = [
   {
     title: "Definitions",
     content: [
-      '"Website" refers to [Your Website Name], operated by [Your Company Name]',
+      '"Website" refers to https://iconaistudio.com/, operated by Whitestone tech limited',
       '"User" refers to any individual or entity using the Website.',
       '"Service" refers to the logo generator powered by DALL-E provided by the Website',
       '"Generated Content" refers to logos or other outputs produced using the Service',
@@ -349,7 +349,7 @@ export const termsData = [
   {
     title: "Contact Us",
     content: [
-      "If you have any questions about the Terms, please contact us at [Your Contact Information].",
+      "If you have any questions about the Terms, please contact us at whitestonetechlimited@gmail.com.",
     ],
   },
 ];
