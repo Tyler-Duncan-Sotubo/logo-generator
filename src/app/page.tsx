@@ -10,13 +10,13 @@ import { features, testimonials } from "@/data/data";
 const HeroComponent = () => (
   <section className="my-12 grid grid-cols-1 gap-20 sm:grid-cols-2">
     <div className="flex flex-col gap-10">
-      <h1 className="mt-12 text-6xl font-medium">
+      <h1 className="mt-12 text-center text-4xl font-medium md:text-left md:text-6xl">
         Change your brand identity with one click, Try Now!
       </h1>
-      <p className="text-2xl">
+      <p className="text-center text-lg md:text-left md:text-2xl">
         Use AI to generate logo in seconds take your brand to the next level.
       </p>
-      <Link href="/generate-logo" className="self-start">
+      <Link href="/generate-logo" className="self-center md:self-start">
         <Button>Generate Your Logo</Button>
       </Link>
     </div>
