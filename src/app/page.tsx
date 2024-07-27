@@ -5,7 +5,7 @@ import { Button } from "@/components/Button";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import type { Logos } from "@prisma/client";
-import { features } from "@/data/data";
+import { features, testimonials } from "@/data/data";
 
 const HeroComponent = () => (
   <section className="my-12 grid grid-cols-1 gap-20 sm:grid-cols-2">
@@ -17,7 +17,7 @@ const HeroComponent = () => (
         Use AI to generate logo in seconds take your brand to the next level.
       </p>
       <Link href="/generate-logo" className="self-start">
-        <Button>Generated Your Logo</Button>
+        <Button>Generate Your Logo</Button>
       </Link>
     </div>
     <Image
@@ -89,6 +89,47 @@ export default async function Home() {
             ))}
           </ul>
         </section>
+        <section className="my-20">
+          <div className="my-10">
+            <h3 className="text-center text-2xl font-bold">
+              Public Cheers for Us!
+            </h3>
+            <p className="mb-10 text-center text-xl">
+              Find out how our users are spreading the word
+            </p>
+          </div>
+          <ul className="grid grid-cols-1 gap-10 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <li
+                key={testimonial.name}
+                className="rounded-xl bg-white p-5 shadow-xl"
+              >
+                <div className="mb-4 flex items-center gap-3">
+                  <Image
+                    src={testimonial.icon}
+                    alt={testimonial.name}
+                    width="80"
+                    height="80"
+                    className="rounded-full"
+                  />
+                  <div>
+                    <h4 className="font-medium">{testimonial.name}</h4>
+                    <p className="font-bold">{testimonial.remark}</p>
+                  </div>
+                </div>
+                <p className="capitalize tracking-wide">
+                  {testimonial.message}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <Link
+          href="/generate-logo"
+          className="my-20 flex items-center justify-center"
+        >
+          <Button>GENERATE YOUR AI ICONS TODAY</Button>
+        </Link>
       </main>
       <footer>
         <Footer />

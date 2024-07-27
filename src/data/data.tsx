@@ -353,3 +353,48 @@ export const termsData = [
     ],
   },
 ];
+
+export const testimonials = [
+  {
+    name: "Sarah Thompson",
+    remark: "Incredible tool!",
+    icon: "https://generator-logo.s3.amazonaws.com/clyuflbgt000bp398cvpgyupi.png",
+    message:
+      "I was able to create a unique and professional logo for my business in minutes. The AI is truly impressive!",
+  },
+  {
+    name: "James Peterson",
+    remark: "User-friendly and efficient.",
+    icon: "https://generator-logo.s3.amazonaws.com/clyvm86rv0019ldg23qcmi9ro.png",
+    message:
+      "The logo generator is very intuitive, and the results are outstanding. Highly recommend for anyone needing a quick and high-quality logo.",
+  },
+  {
+    name: "Lisa Martinez",
+    remark: "Exceeded my expectations.",
+    icon: "https://generator-logo.s3.amazonaws.com/clyvfgkct0007ldg23r1o2905.png",
+    message:
+      "I wasn't sure what to expect, but the variety and quality of the icons I could create were amazing. Saved me a lot of time and money.",
+  },
+  {
+    name: "Mark Davis",
+    remark: "Fantastic experience!",
+    icon: "https://generator-logo.s3.amazonaws.com/clyvmuadp001pldg2gh01lp1f.png",
+    message:
+      "The interface is sleek, and the AI produces excellent designs. Perfect for startups on a budget.",
+  },
+  {
+    name: "Emily Roberts",
+    remark: "Highly recommended!",
+    icon: "https://generator-logo.s3.amazonaws.com/clywunneg000tneprqd0ye7ig.png",
+    message:
+      " used this tool for my e-commerce site, and it delivered beyond my expectations. The logos are clean and professional.",
+  },
+  {
+    name: "John Kennedy",
+    remark: "A game-changer for my brand!",
+    icon: "https://generator-logo.s3.amazonaws.com/clyxfoqas000928akfci0if5o.png",
+    message:
+      "The logo generator provided me with so many creative options that perfectly matched my brand's personality. It's a must-have tool for any business owner",
+  },
+];
