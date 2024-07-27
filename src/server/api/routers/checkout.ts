@@ -19,9 +19,9 @@ export const checkoutRouter = createTRPCRouter({
       if (input.price === "5") {
         price = env.PRODUCT_PRICE_ID;
       } else if (input.price === "9") {
-        price = "price_1PeeYhGtt0b9wFoNGsYV84fJ";
+        price = env.PRODUCT_PRICE_ID_100;
       } else if (input.price === "25") {
-        price = "price_1PeeZIGtt0b9wFoNeNOD3REo";
+        price = env.PRODUCT_PRICE_ID_300;
       }
 
       return await Stripe.checkout.sessions.create({
