@@ -8,7 +8,7 @@ export const navData = [
     href: "/generate-logo",
   },
   {
-    title: "Awesome Icons",
+    title: "Free Awesome Icons",
     href: "/icons",
   },
 ];

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import type { Logos } from "@prisma/client";
 import { features, testimonials } from "@/data/data";
+import { shuffleArray } from "@/helper/shuffleArray";
 
 const HeroComponent = () => (
   <section className="my-12 grid grid-cols-1 gap-20 sm:grid-cols-2">
@@ -35,6 +36,8 @@ export default async function Home() {
   const icons = await api.icons.getAllIcons();
 
   const createIconsAndLogos = [...icons, ...logos];
+
+  shuffleArray(createIconsAndLogos);
 
   return (
     <HydrateClient>

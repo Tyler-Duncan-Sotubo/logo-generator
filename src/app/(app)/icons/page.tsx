@@ -1,12 +1,16 @@
 import { api } from "@/trpc/server";
 import Image from "next/image";
 import type { Logos } from "@prisma/client";
+import { shuffleArray } from "@/helper/shuffleArray";
 
 const page = async () => {
   const logos = await api.logos.getAllLogos();
   const icons = await api.icons.getAllIcons();
 
   const createIconsAndLogos = [...icons, ...logos];
+
+  shuffleArray(createIconsAndLogos);
+
   return (
     <section className="min-h-screen">
       <h1 className="text-3xl font-medium">

@@ -37,6 +37,9 @@ const CreateLogo = () => {
       if (!data) return;
       router.push(`/my-logos`);
     },
+    onError: () => {
+      setShowModal(false);
+    },
   });
 
   const validateForm = () => {
@@ -80,7 +83,9 @@ const CreateLogo = () => {
   };
 
   useEffect(() => {
-    generateLogo.isPending && setShowModal(true);
+    if (generateLogo.isPending) {
+      setShowModal(true);
+    }
   }, [generateLogo.isPending]);
 
   return (
@@ -218,9 +223,13 @@ const CreateLogo = () => {
 
         {/* Server Error */}
         {generateLogo.error && (
-          <p className="mt-4 text-lg text-red-500">
-            {generateLogo.error.message}
-          </p>
+          <ul className="mt-4 list-disc rounded-md bg-red-100 px-10 py-4 text-red-800">
+            {generateLogo.error.message === "UNAUTHORIZED" ? (
+              <p>Please login to continue</p>
+            ) : (
+              <p>Something went wrong</p>
+            )}
+          </ul>
         )}
       </form>
       {showModal && (
