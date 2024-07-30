@@ -5,7 +5,8 @@ export const CreditsPricing = [
     description: "$0.10 per image",
     price: "1.99",
     features: [
-      "50 AI Credits to generate",
+      "20 AI Credits to generate Logo or Icons",
+      "Use Credit Anytime",
       "Transparent PNG",
       "Logo Download",
       "800 x 600px Image Size",
@@ -17,7 +18,8 @@ export const CreditsPricing = [
     description: "$0.10 per image",
     price: "4.99",
     features: [
-      "50 AI Credits to generate",
+      "50 AI Credits to generate Logo or Icons",
+      "Use Credit Anytime",
       "Transparent PNG",
       "Logo Download",
       "High-Resolution Image Size",
@@ -29,7 +31,8 @@ export const CreditsPricing = [
     description: "$0.09 per image",
     price: "8.99",
     features: [
-      "50 AI Credits to generate",
+      "100 AI Credits to generate Logo or Icons",
+      "Use Credit Anytime",
       "Transparent PNG",
       "Logo Download",
       "High-Resolution Image Size",
