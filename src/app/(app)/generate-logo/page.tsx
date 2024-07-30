@@ -10,6 +10,7 @@ import { colorPatterns, industries, styles } from "@/data/data";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/Spinner";
 import Link from "next/link";
+import { useBuyCredits } from "@/hooks/useBuyCredits";
 
 const CreateLogo = () => {
   const router = useRouter();
@@ -23,6 +24,8 @@ const CreateLogo = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("");
   const [selectedFontStyle, setSelectedFontStyle] = useState<string>("");
   const [formErrors, setFormErrors] = useState<string[]>([]);
+
+  const { buyCredits } = useBuyCredits({ price: "1.99" });
 
   const updateForm = (key: keyof typeof formData) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,40 +213,40 @@ const CreateLogo = () => {
         <p className="my-10 text-xl text-green-800">
           One Credit per Logo Generated
         </p>
-
-        {/* Error Messages */}
-        {formErrors.length > 0 && (
-          <ul className="mt-4 list-disc rounded-md bg-red-100 px-10 py-4 text-red-800">
-            {formErrors.map((error, index) => (
-              <li key={index} className="text-lg">
-                {error}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {/* Server Error */}
-        {generateLogo.error && (
-          <ul className="mt-4 list-disc rounded-md bg-red-100 px-10 py-4 text-red-800">
-            {generateLogo.error.message === "UNAUTHORIZED" ? (
-              <p>Please login to continue</p>
-            ) : (
-              <div>
-                {generateLogo.error.message === "no credit" ? (
-                  <div className="flex items-center gap-10">
-                    <p>You have no credit to generate icon</p>
-                    <Link href="/buy-credit">
-                      <Button>Buy Credit To Continue</Button>
-                    </Link>
-                  </div>
-                ) : (
-                  generateLogo.error.message
-                )}
-              </div>
-            )}
-          </ul>
-        )}
       </form>
+
+      {/* Error Messages */}
+      {formErrors.length > 0 && (
+        <ul className="mt-4 list-disc rounded-md bg-red-100 px-10 py-4 text-red-800">
+          {formErrors.map((error, index) => (
+            <li key={index} className="text-lg">
+              {error}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Server Error */}
+      {generateLogo.error && (
+        <ul className="mt-4 list-disc rounded-md bg-red-100 px-10 py-4 text-red-800">
+          {generateLogo.error.message === "UNAUTHORIZED" ? (
+            <p>Please login to continue</p>
+          ) : (
+            <div>
+              {generateLogo.error.message === "no credit" ? (
+                <div className="flex items-center gap-10">
+                  <p>You have no credit to generate Logo</p>
+                  <Button onClick={() => buyCredits().catch(console.error)}>
+                    Buy Credit To Continue
+                  </Button>
+                </div>
+              ) : (
+                generateLogo.error.message
+              )}
+            </div>
+          )}
+        </ul>
+      )}
       {showModal && (
         <section className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
           <div className="flex h-[30%] w-[80%] flex-col items-center justify-center">
