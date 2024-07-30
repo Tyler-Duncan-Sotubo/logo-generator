@@ -49,7 +49,7 @@ export const generateRouter = createTRPCRouter({
       if (result!.credits <= 0) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "You do not enough credits",
+          message: "no credit",
         });
       } else {
         await ctx.db.user.update({

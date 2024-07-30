@@ -9,6 +9,7 @@ import { Button } from "@/components/Button";
 import { colorPatterns, industries, styles } from "@/data/data";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/Spinner";
+import Link from "next/link";
 
 const CreateLogo = () => {
   const router = useRouter();
@@ -227,7 +228,18 @@ const CreateLogo = () => {
             {generateLogo.error.message === "UNAUTHORIZED" ? (
               <p>Please login to continue</p>
             ) : (
-              <p>Something went wrong</p>
+              <div>
+                {generateLogo.error.message === "no credit" ? (
+                  <div className="flex items-center gap-10">
+                    <p>You have no credit to generate icon</p>
+                    <Link href="/buy-credit">
+                      <Button>Buy Credit To Continue</Button>
+                    </Link>
+                  </div>
+                ) : (
+                  generateLogo.error.message
+                )}
+              </div>
             )}
           </ul>
         )}

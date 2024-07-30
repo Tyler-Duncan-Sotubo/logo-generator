@@ -10,6 +10,7 @@ import { colors, iconStyles, backgrounds } from "@/data/data";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/Spinner";
 import Image from "next/image";
+import Link from "next/link";
 
 const CreateIcon = () => {
   const router = useRouter();
@@ -199,7 +200,18 @@ const CreateIcon = () => {
             {generateIcon.error.message === "UNAUTHORIZED" ? (
               <p>Please login to continue</p>
             ) : (
-              <p>Something went wrong</p>
+              <p>
+                {generateIcon.error.message === "no credit" ? (
+                  <div className="flex items-center gap-10">
+                    <p>You have no credit to generate icon</p>
+                    <Link href="/buy-credit">
+                      <Button>Buy Credit To Continue</Button>
+                    </Link>
+                  </div>
+                ) : (
+                  generateIcon.error.message
+                )}
+              </p>
             )}
           </ul>
         )}
