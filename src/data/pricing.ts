@@ -1,9 +1,9 @@
 export const CreditsPricing = [
   {
     id: 1,
-    plan: "50 Credits",
+    plan: "20 Credits",
     description: "$0.10 per image",
-    price: "5",
+    price: "1.99",
     features: [
       "50 AI Credits to generate",
       "Transparent PNG",
@@ -13,9 +13,9 @@ export const CreditsPricing = [
   },
   {
     id: 2,
-    plan: "100 Credits",
-    description: "$0.09 per image",
-    price: "9",
+    plan: "50 Credits",
+    description: "$0.10 per image",
+    price: "4.99",
     features: [
       "50 AI Credits to generate",
       "Transparent PNG",
@@ -25,9 +25,9 @@ export const CreditsPricing = [
   },
   {
     id: 3,
-    plan: "300 Credits",
-    description: "$0.07 per image",
-    price: "25",
+    plan: "100 Credits",
+    description: "$0.09 per image",
+    price: "8.99",
     features: [
       "50 AI Credits to generate",
       "Transparent PNG",

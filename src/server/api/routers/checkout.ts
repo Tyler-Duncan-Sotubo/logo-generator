@@ -16,11 +16,11 @@ export const checkoutRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       let price = "";
-      if (input.price === "5") {
+      if (input.price === "1.99") {
         price = env.PRODUCT_PRICE_ID;
-      } else if (input.price === "9") {
+      } else if (input.price === "4.99") {
         price = env.PRODUCT_PRICE_ID_100;
-      } else if (input.price === "25") {
+      } else if (input.price === "8.99") {
         price = env.PRODUCT_PRICE_ID_300;
       }
 

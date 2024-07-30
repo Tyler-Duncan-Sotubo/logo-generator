@@ -47,14 +47,14 @@ export async function POST(request: Request) {
 
       let credits = 0;
       switch (completedEvent.amount_total) {
-        case 500:
+        case 499:
           credits = 50;
           break;
-        case 900:
+        case 899:
           credits = 100;
           break;
-        case 2500:
-          credits = 300;
+        case 199:
+          credits = 20;
           break;
         default:
           console.log(`Unhandled amount ${completedEvent.amount_total}`);
