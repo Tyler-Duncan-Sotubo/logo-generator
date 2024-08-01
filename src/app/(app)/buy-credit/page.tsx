@@ -23,7 +23,7 @@ const BuyCredit = () => {
         <span className="text-red-600">
           <Link href="/refund">Refund Policy</Link>
         </span>{" "}
-        carefully before purchasing any credits. We do not issue refunds.
+        carefully before purchasing any credits.
       </h5>
 
       <div className="mt-6">

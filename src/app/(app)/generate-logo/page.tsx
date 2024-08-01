@@ -9,7 +9,6 @@ import { Button } from "@/components/Button";
 import { colorPatterns, industries, styles } from "@/data/data";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/Spinner";
-import Link from "next/link";
 import { useBuyCredits } from "@/hooks/useBuyCredits";
 
 const CreateLogo = () => {
