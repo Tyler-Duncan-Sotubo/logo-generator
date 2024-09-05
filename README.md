@@ -37,5 +37,3 @@ Before you begin, ensure you have the following installed:
 - The `Stripe` section includes a webhook setup for handling payment events.
 - The project is structured to be easily deployed on platforms like Vercel, with the necessary environment variable configurations.
 
-This Markdown-formatted README should be easy to understand for other developers looking to use or contribute to your AI logo generator website!
-
