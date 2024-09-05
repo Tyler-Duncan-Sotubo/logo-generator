@@ -1,29 +1,40 @@
-# Create T3 App
+# AI Logo Generator Website
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This repository contains the source code for an AI-powered logo generator website built using the **T3 Stack** with **Next.js**. The website allows users to create unique logos using the **DALL·E-3 API**, supports Google login for user authentication, and integrates with **Stripe** for handling payments.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **DALL·E-3 API Integration**: Users can generate custom logos based on their input, using OpenAI's DALL·E-3 model.
+- **Google Login**: Secure and fast authentication via Google OAuth 2.0.
+- **Stripe Payments**: Stripe handles premium services, such as higher-quality logo generation or additional usage.
+- **Responsive Design**: The UI is built to work seamlessly across devices, including mobile, tablet, and desktop.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Technologies Used
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Next.js API routes
+- **Database**: Prisma (with PostgreSQL or another relational database)
+- **Authentication**: Google OAuth using NextAuth.js
+- **Payment**: Stripe API
+- **AI**: DALL·E-3 API (provided by OpenAI)
 
-## Learn More
+## Prerequisites
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+Before you begin, ensure you have the following installed:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- **Node.js** (v14.x or higher)
+- **npm** or **yarn**
+- **PostgreSQL** (or another relational database supported by Prisma)
+- **Google Developer Console** project with OAuth credentials
+- **Stripe** account with API keys
+- **OpenAI API key** for DALL·E-3
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Getting Started
 
-## How do I deploy this?
+Follow these steps to set up the project on your local machine:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### 1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd ai-logo-generator
