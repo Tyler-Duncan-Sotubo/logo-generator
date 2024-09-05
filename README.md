@@ -1,6 +1,6 @@
 # AI Logo Generator Website
 
-This repository contains the source code for an AI-powered logo generator website built using the **T3 Stack** with **Next.js**. The website allows users to create unique logos using the **DALL·E-3 API** and multiple predefined prompts, the image is stored in S3 and attached to each user, supports Google login for user authentication, and integrates with **Stripe** for handling payments.
+This repository contains the source code for an AI-powered logo generator website built using the **T3 Stack** with **Next.js**. The website allows users to create unique logos using the **DALL·E-3 API** with multiple predefined prompts, the image is stored in S3 and attached to each user, supports Google login for user authentication, and integrates with **Stripe** for handling payments.
 
 ## Features
 
